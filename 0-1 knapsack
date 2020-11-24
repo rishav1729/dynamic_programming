@@ -17,7 +17,7 @@ int knapsack(std::vector <int> weight, std::vector <int> value, int maxweight, i
 
 
 int main()
-{std::
+{
 	int n;
 	std::cout<<"Enter the number of items: ";
 	std::cin>>n;
