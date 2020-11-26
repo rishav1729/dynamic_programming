@@ -1,10 +1,10 @@
-#include<bits/stdc++.h>
+#include<iostream>
+#include<vector>
 #define MAX 1005
-using namespace std;
 
-vector < vector<int> > dp(MAX, vector<int> (MAX, -1));
+std::vector < std::vector<int> > dp(MAX, std::vector<int> (MAX, -1));
 
-int knapsack(vector <int> weight, vector <int> value, int maxweight, int index)
+int knapsack(std::vector <int> weight,std:: vector <int> value, int maxweight, int index)
 {
 	//base condition
 	if( (index < 0) || (maxweight <= 0) )
@@ -12,7 +12,7 @@ int knapsack(vector <int> weight, vector <int> value, int maxweight, int index)
 	if(dp[index][maxweight] == -1)
 	{
 		if(weight[index] <= maxweight)
-			dp[index][maxweight] =  max(value[index] + knapsack(weight, value, maxweight - weight[index], index-1), knapsack(weight, value, maxweight, index-1));
+			dp[index][maxweight] =  std::max(value[index] + knapsack(weight, value, maxweight - weight[index], index-1), knapsack(weight, value, maxweight, index-1));
 		
 		else
 			dp[index][maxweight] = knapsack(weight, value, maxweight, index-1);
@@ -25,22 +25,22 @@ int knapsack(vector <int> weight, vector <int> value, int maxweight, int index)
 int main()
 {
 	int n;
-	cout<<"Enter the number of items: ";
-	cin>>n;
-	vector <int> weight(n), value(n);
+	std::cout<<"Enter the number of items: ";
+	std::cin>>n;
+	std::vector <int> weight(n), value(n);
 
-	cout<<"enter weights: "<<endl;
+	std::cout<<"enter weights: "<<std::endl;
 	for(int  i=0; i<n; i++)
-		cin>>weight[i];
-	cout<<"enter values: "<<endl;
+		std::cin>>weight[i];
+	std::cout<<"enter values: "<<std::endl;
 	for(int  i=0; i<n; i++)
-		cin>>value[i];
+		std::cin>>value[i];
 
 	
 	int maxweight;
 
-	cout<<"Enter maximum capacity of knapsack: ";
-	cin>>maxweight;
+	std::cout<<"Enter maximum capacity of knapsack: ";
+	std::cin>>maxweight;
 
-	cout<<knapsack(weight, value, maxweight, n-1);
+	std::cout<<knapsack(weight, value, maxweight, n-1);
 }
